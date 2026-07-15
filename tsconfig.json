@@ -1,0 +1,11 @@
+{
+  "compilerOptions": {
+    "lib": ["ES2023", "DOM"],
+    "module": "Preserve",
+    "moduleResolution": "Bundler",
+    "noEmit": true,
+    "strict": true,
+    "types": ["bun", "chrome"]
+  },
+  "include": ["src/**/*.ts", "scripts/**/*.ts"]
+}

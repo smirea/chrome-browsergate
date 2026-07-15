@@ -1,0 +1,16 @@
+{
+  "manifest_version": 3,
+  "name": "Browser Gate",
+  "description": "Local bridge for controlling Chrome from scripts.",
+  "version": "0.1.0",
+  "minimum_chrome_version": "120",
+  "permissions": ["alarms", "cookies", "debugger", "scripting", "tabs"],
+  "host_permissions": ["<all_urls>"],
+  "background": {
+    "service_worker": "background.js",
+    "type": "module"
+  },
+  "action": {
+    "default_title": "Browser Gate"
+  }
+}

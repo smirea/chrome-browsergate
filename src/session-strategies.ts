@@ -5,6 +5,7 @@ export interface SessionStrategy {
   storageKeyPatterns: string[];
   cookieNamePatterns: string[];
   cookieMode: 'none' | 'matching' | 'all';
+  cookieFirst?: boolean;
 }
 
 export interface StorageEntry {
@@ -35,6 +36,15 @@ const TOKEN_KEYS = [
 ];
 
 export const sessionStrategies: SessionStrategy[] = [
+  {
+    id: 'clocktracker',
+    domains: ['clocktracker.app'],
+    requestUrlPatterns: [],
+    storageKeyPatterns: [],
+    cookieNamePatterns: [],
+    cookieMode: 'all',
+    cookieFirst: true,
+  },
   {
     id: 'cookunity',
     domains: ['cookunity.com'],

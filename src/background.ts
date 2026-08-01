@@ -153,6 +153,14 @@ async function getSession(target: string): Promise<SessionResult> {
   await activateTab(tab);
   const strategy = strategyForUrl(tab.url);
 
+  if (strategy.cookieFirst) {
+    const cookies = await chrome.cookies.getAll({ url: tab.url });
+    const cookie = findCookieCredential(cookies, strategy);
+    if (cookie) {
+      return { tab, strategy: strategy.id, ...cookie };
+    }
+  }
+
   const authorization = await captureAuthorization(tab.id, strategy);
   if (authorization) {
     return {

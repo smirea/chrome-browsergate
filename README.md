@@ -43,6 +43,14 @@ The plain command writes only the credential, so it can be piped to another scri
 
 CookUnity has a dedicated strategy in `src/session-strategies.ts`. It briefly attaches Chrome's network debugger, reloads the selected CookUnity tab, captures the bearer token from its outgoing API request, and immediately detaches. Chrome may show its standard debugging banner during those few seconds. Other sites use the same Authorization-header capture, then storage and cookie fallbacks. Add domain-specific behavior to the same file when a site needs it.
 
+Airbnb uses its full cookie session directly, without attaching the debugger or reloading the tab:
+
+```sh
+scripts/invoke get-session https://www.airbnb.com/trips --json
+```
+
+The companion `~/code/scripts/airbnb.ts` command uses this connector only with `--refresh-session`. Its `reservations` and `wishlists` commands normally read Airbnb's API using credentials saved in the scripts repo's ignored `.env.local`, without opening browser tabs.
+
 ## Automations
 
 Automations live in `src/automations.ts` and are compiled into the extension. They run once whenever a matching URL finishes loading or changes through client-side navigation.

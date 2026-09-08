@@ -37,6 +37,15 @@ const TOKEN_KEYS = [
 
 export const sessionStrategies: SessionStrategy[] = [
   {
+    id: 'airbnb',
+    domains: ['airbnb.com'],
+    requestUrlPatterns: [],
+    storageKeyPatterns: [],
+    cookieNamePatterns: [],
+    cookieMode: 'all',
+    cookieFirst: true,
+  },
+  {
     id: 'clocktracker',
     domains: ['clocktracker.app'],
     requestUrlPatterns: [],
